@@ -3,8 +3,6 @@ import './App.css';
 import Field from './components/field.js';
 import Button from './components/button.js';
 
-const buttonName = 'Добавить оборудование';
-
 class App extends Component {
   render() {
     return (
@@ -12,7 +10,7 @@ class App extends Component {
             <Field />
             <Field />
             <Field />
-            <Button buttonName={buttonName} />
+            <Button buttonName='Добавить оборудование' />
       </div>
     );
   }
