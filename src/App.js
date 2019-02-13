@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import Field from './components/field.js';
+import Button from './components/button.js';
+
+const buttonName = 'Добавить оборудование';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
             <Field />
             <Field />
             <Field />
-        </header>
+            <Button buttonName={buttonName} />
       </div>
     );
   }
