@@ -10,7 +10,7 @@ class App extends Component {
             <Field />
             <Field />
             <Field />
-            <Button buttonName='Добавить оборудование' />
+            <Button buttonName='Добавить новое оборудование' />
       </div>
     );
   }
