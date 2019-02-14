@@ -6,22 +6,26 @@ import {selectEquipment, selectMalfunction} from "../actions";
 
 class RequestContainer extends React.Component  {
 
-    equipment = () => this.props.dispatch(selectEquipment());
-    malfunction = () => this.props.dispatch(selectMalfunction());
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(selectEquipment());
+        dispatch(selectMalfunction());
+    }
 
     render() {
-        return(
-            <div>
-                {console.log(this.equipment)}
-                {console.log(this.malfunction)}
-                <div>
-                    <Field />
-                    <Field />
-                    <Field />
-                </div>
-                <Button buttonName='Добавить новое оборудование' />
-            </div>
-        )
+        return (
+            <React.Fragment>
+                {!this.props.selectedEquipment.equipment ? <div>Loading...</div> :
+                    <div>
+                        <div>
+                            <Field array={this.props.selectedEquipment.equipment.equipment}/>
+                            <Field array={this.props.selectedMalfunction.malfunction.malfunction}/>
+                        </div>
+                        <Button buttonName='Добавить новое оборудование'/>
+                    </div>
+                }
+            </React.Fragment>
+        );
     }
 }
 

@@ -1,13 +1,16 @@
 import React from 'react';
 
-const Field = () => (
+const Field = ({array}) => (
     <div>
         <form>
             <select name="options">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                {
+                    array.map((array, index) =>
+                        <option key={index} value={array.id}>
+                                {array.name}
+                        </option>
+                    )
+                }
             </select>
         </form>
     </div>

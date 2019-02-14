@@ -7,13 +7,13 @@ export const SELECT_MALFUNCTION = 'SELECT_MALFUNCTION';
 export const selectEquipment = () => {
     return {
         type: SELECT_EQUIPMENT,
-        data: equipment
+        equipment
     }
 };
 
 export const selectMalfunction = () => {
     return {
         type: SELECT_MALFUNCTION,
-        data: malfunction
+        malfunction
     }
 };

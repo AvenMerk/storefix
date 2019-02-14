@@ -6,7 +6,7 @@ const selectedEquipment = (state = [], action) => {
         case SELECT_EQUIPMENT:
             return {
                 ...state,
-                data: action.data
+                equipment: action.equipment
             };
         default:
             return state;
@@ -18,7 +18,7 @@ const selectedMalfunction = (state = [], action) => {
         case SELECT_MALFUNCTION:
             return {
                 ...state,
-                data: action.data
+                malfunction: action.malfunction
             };
         default:
             return state;
