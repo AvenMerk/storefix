@@ -3,10 +3,8 @@ import React from 'react';
 const Field = ({array, placeHolder}) => (
     <div>
         <form>
-            <select name="options">
-                <option value=""
-                        hidden
-                >{placeHolder}</option>
+            <select name="options" className='custom-select'>
+                <option value="" hidden>{placeHolder}</option>
                 {
                     array.map((array, index) =>
                         <option key={index} value={array.id}>
