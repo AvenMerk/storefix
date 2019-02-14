@@ -6,22 +6,53 @@ import {selectEquipment, selectMalfunction} from "../actions";
 
 class RequestContainer extends React.Component  {
 
+    state = {
+        numberOfEquipments: 1,
+        numberOfMalfunctions: 1,
+    };
+
     componentDidMount() {
         const { dispatch } = this.props;
         dispatch(selectEquipment());
         dispatch(selectMalfunction());
     }
 
+    addMalfunction = (e) => {
+        e.preventDefault();
+        console.log('add');
+    };
+
+    addEquipment = (e) => {
+        e.preventDefault();
+        this.setState({numberOfEquipments: this.state.numberOfEquipments + 1})
+    };
+
     render() {
+        const children = [];
+        if (!this.props.selectedEquipment.equipment) {
+            return <div>Loading...</div>
+        }  else {
+            for (let i = 0; i < this.state.numberOfEquipments; i++) {
+                children.push(
+                    <div>
+                        <p>Оборудование</p>
+                        <Field array={this.props.selectedEquipment.equipment.equipment} key={`Equipment${i}`} />
+                        <p>Неисправности</p>
+                        <div>
+                            <Field array={this.props.selectedMalfunction.malfunction.malfunction} key={`Malfunction${i}`}/>
+                        </div>
+                    </div>)
+            }
+        }
+
         return (
             <React.Fragment>
                 {!this.props.selectedEquipment.equipment ? <div>Loading...</div> :
                     <div>
-                        <div>
-                            <Field array={this.props.selectedEquipment.equipment.equipment}/>
-                            <Field array={this.props.selectedMalfunction.malfunction.malfunction}/>
+                        <div id='selection-window'>
+                            {children}
                         </div>
-                        <Button buttonName='Добавить новое оборудование'/>
+                        <Button buttonName='Добавить новое оборудование' onClickFunction={this.addEquipment}/>
                     </div>
                 }
             </React.Fragment>
