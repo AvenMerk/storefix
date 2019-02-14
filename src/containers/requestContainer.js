@@ -4,9 +4,11 @@ import Button from '../components/button.js';
 
 const RequestContainer = () => (
     <div>
-        <Field />
-        <Field />
-        <Field />
+        <div>
+            <Field />
+            <Field />
+            <Field />
+        </div>
         <Button buttonName='Добавить новое оборудование' />
     </div>
 );
