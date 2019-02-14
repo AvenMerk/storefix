@@ -4,10 +4,7 @@ import { combineReducers } from 'redux';
 const selectedEquipment = (state = [], action) => {
     switch (action.type) {
         case SELECT_EQUIPMENT:
-            return {
-                ...state,
-                equipment: action.equipment
-            };
+            return  action.equipment;
         default:
             return state;
     }
@@ -16,10 +13,7 @@ const selectedEquipment = (state = [], action) => {
 const selectedMalfunction = (state = [], action) => {
     switch (action.type) {
         case SELECT_MALFUNCTION:
-            return {
-                ...state,
-                malfunction: action.malfunction
-            };
+            return action.malfunction;
         default:
             return state;
     }
