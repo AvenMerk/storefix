@@ -1,5 +1,5 @@
-import equipment from '../data/equipment.json';
-import malfunction from '../data/malfunction.json';
+import equipment from '../data/equipment';
+import malfunction from '../data/malfunction';
 
 export const SELECT_EQUIPMENT = 'SELECT_EQUIPMENT';
 export const SELECT_MALFUNCTION = 'SELECT_MALFUNCTION';
