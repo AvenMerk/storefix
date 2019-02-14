@@ -21,8 +21,7 @@ export default class Select extends React.Component {
                        placeholder={placeHolder}
                        value={value ? value : ''}/>
 
-                <div className="select-box--arrow" onClick={this.dropDown}>
-                </div>
+                <span className="select-box--arrow" onClick={this.dropDown}/>
             </div>
 
             <div style={{display: expand ? 'block' : 'none'}}>
@@ -30,7 +29,7 @@ export default class Select extends React.Component {
                     {children.map((child, index) =>
                         <div key={index}
                             className='select-box--item'
-                            onClick={() => onClick(child.props.value)}>
+                            onClick={() => onClick(child.props.children)}>
                             {child}
                         </div>
                     )}
