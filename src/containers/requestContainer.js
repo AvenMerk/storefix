@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import Field from '../components/field.js';
 import Button from '../components/button.js';
 import {selectEquipment, selectMalfunction} from "../actions";
+import SelectMenu from '../features/selectMenu'
+
 
 class RequestContainer extends React.Component  {
 
@@ -54,10 +56,12 @@ class RequestContainer extends React.Component  {
             <React.Fragment>
                 {!this.props.selectedEquipment.equipment ? <div>Loading...</div> :
                     <div>
-                        <div id='selection-window'>
+                        <div className='request-container'>
                             {children}
+                            <SelectMenu items={this.props.selectedEquipment.equipment.equipment}
+                                        placeHolder={'Начните набирать, или выберите из списка'}/>
                         </div>
-                        <Button buttonName='Добавить новое оборудование'
+                        <Button buttonName='Добавить оборудование'
                                 onClickFunction={this.addEquipment}/>
                     </div>
                 }
