@@ -20,11 +20,12 @@ class RequestContainer extends React.Component  {
     addMalfunction = (e) => {
         e.preventDefault();
         console.log('add');
+        this.setState({numberOfMalfunctions: this.state.numberOfMalfunctions + 1})
     };
 
     addEquipment = (e) => {
         e.preventDefault();
-        this.setState({numberOfEquipments: this.state.numberOfEquipments + 1})
+        this.setState({numberOfEquipments: this.state.numberOfEquipments + 1});
     };
 
     render() {
@@ -36,10 +37,14 @@ class RequestContainer extends React.Component  {
                 children.push(
                     <div>
                         <p>Оборудование</p>
-                        <Field array={this.props.selectedEquipment.equipment.equipment} key={`Equipment${i}`} />
+                        <Field array={this.props.selectedEquipment.equipment.equipment}
+                               key={`Equipment${i}`}
+                               placeHolder='Выберите оборудование'/>
                         <p>Неисправности</p>
                         <div>
-                            <Field array={this.props.selectedMalfunction.malfunction.malfunction} key={`Malfunction${i}`}/>
+                            <Field array={this.props.selectedMalfunction.malfunction.malfunction}
+                                   key={`Malfunction${i}`}
+                                   placeHolder='Выберите неисправность'/>
                         </div>
                     </div>)
             }
@@ -52,7 +57,8 @@ class RequestContainer extends React.Component  {
                         <div id='selection-window'>
                             {children}
                         </div>
-                        <Button buttonName='Добавить новое оборудование' onClickFunction={this.addEquipment}/>
+                        <Button buttonName='Добавить новое оборудование'
+                                onClickFunction={this.addEquipment}/>
                     </div>
                 }
             </React.Fragment>
