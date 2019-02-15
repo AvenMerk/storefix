@@ -7,7 +7,9 @@ import Select from '../components/select'
 
 
 class RequestContainer extends React.Component  {
-    state = {};
+    state = {
+        expand: false,
+    };
 
     componentDidMount() {
         const { dispatch } = this.props;
@@ -15,7 +17,14 @@ class RequestContainer extends React.Component  {
         dispatch(selectMalfunction());
     }
 
-    selector = (name) => (value) =>  this.setState({[name]: value});
+    dropDown = () => this.setState(prevState => ({
+        expand:  !prevState.expand,
+    }));
+
+    selector = (name) => (value) => {
+        this.setState({[name]: value});
+        this.dropDown();
+    };
 
     render() {
         const { selectedEquipment } = this.props;
@@ -26,7 +35,10 @@ class RequestContainer extends React.Component  {
                         <div className='request-container'>
                             <Select placeHolder='Начните набирать, или выберите из списка'
                                     value={this.state.equipValue}
-                                    onClick={this.selector('equipValue')}>
+                                    onClick={this.selector('equipValue')}
+                                    expand={this.state.expand}
+                                    dropDown={this.dropDown}
+                            >
 
                                 {selectedEquipment.map(({id, name}, index) =>
                                     <Option key={index} value={id}>

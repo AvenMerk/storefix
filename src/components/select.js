@@ -6,9 +6,9 @@ export default class Select extends React.Component {
         subStr: ''
     };
 
-    dropDown = () => this.setState(prevState => ({
-        expand:  !prevState.expand,
-    }));
+    // dropDown = () => this.setState(prevState => ({
+    //     expand:  !prevState.expand,
+    // }));
 
     onChange = (event) => this.setState({subStr: event.target.value});
 
@@ -23,8 +23,8 @@ export default class Select extends React.Component {
     };
 
     render () {
-        const { placeHolder, onClick, value, children } = this.props;
-        const { expand, subStr } = this.state;
+        const { placeHolder, onClick, value, children, expand, dropDown } = this.props;
+        const { subStr } = this.state;
 
         return <div className='select-box--box'>
             <div className='select-box--container'>
@@ -35,7 +35,7 @@ export default class Select extends React.Component {
                        value={value ? value : subStr}
                        onChange={this.onChange}/>
 
-                <span className={ expand ? "select-box--arrow-up" : "select-box--arrow-down"} onClick={this.dropDown}/>
+                <span className={ expand ? "select-box--arrow-up" : "select-box--arrow-down"} onClick={dropDown}/>
             </div>
 
             <div style={{display: expand ? 'block' : 'none'}}>
