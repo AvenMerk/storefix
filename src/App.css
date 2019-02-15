@@ -89,18 +89,16 @@ input {
   border-bottom: 1px solid #ddd;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
+  cursor: pointer;
+  background-color: white;
   width: 100%;
   padding: 6px;
   padding-right: 20px;
 }
 
-/*.select-box--arrow {*/
-  /*width: 40px;*/
-  /*height: 40px;*/
-  /*margin: 0;*/
-  /*padding: 0;*/
-  /*display: inline-flex;*/
-/*}*/
+.select-box--item:hover {
+  filter: brightness(95%);
+}
 
 .select-box--arrow-down, .select-box--arrow-up {
   padding: 2px;
