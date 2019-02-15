@@ -2,13 +2,18 @@ import React from 'react';
 
 export default class Select extends React.Component {
     state = {
+        expand: false,
         subStr: ''
     };
 
     onChange = (event) => {
         this.setState({subStr: event.target.value});
-        this.props.dropDown();
+        this.dropDown();
     };
+
+    dropDown = () => this.setState(prevState => ({
+        expand:  !prevState.expand,
+    }));
 
     filter = ({props}) => {
         const {subStr} = this.state;
@@ -20,9 +25,14 @@ export default class Select extends React.Component {
         }
     };
 
+    onClickCollapseMenu = (name) => () => {
+        this.dropDown();
+        this.props.onClick(name);
+    };
+
     render () {
-        const { placeHolder, onClick, value, children, expand, dropDown } = this.props;
-        const { subStr } = this.state;
+        const { placeHolder, value, children } = this.props;
+        const { expand, subStr } = this.state;
 
         return <div className='select-box--box'>
             <div className='select-box--container'>
@@ -33,7 +43,7 @@ export default class Select extends React.Component {
                        value={value ? value : subStr}
                        onChange={this.onChange}/>
 
-                <span className={ expand ? "select-box--arrow-up" : "select-box--arrow-down"} onClick={dropDown}/>
+                <span className={ expand ? "select-box--arrow-up" : "select-box--arrow-down"} onClick={this.dropDown}/>
             </div>
 
             <div style={{display: expand ? 'block' : 'none'}}>
@@ -41,7 +51,7 @@ export default class Select extends React.Component {
                     {children.filter(this.filter).map((child, index) =>
                         <div key={index}
                             className='select-box--item'
-                            onClick={() => onClick(child.props.children)}>
+                            onClick={this.onClickCollapseMenu(child.props.children)}>
                             {child}
                         </div>
                     )}
