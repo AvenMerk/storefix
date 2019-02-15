@@ -2,15 +2,13 @@ import React from 'react';
 
 export default class Select extends React.Component {
     state = {
-        expand: false,
         subStr: ''
     };
 
-    // dropDown = () => this.setState(prevState => ({
-    //     expand:  !prevState.expand,
-    // }));
-
-    onChange = (event) => this.setState({subStr: event.target.value});
+    onChange = (event) => {
+        this.setState({subStr: event.target.value});
+        this.props.dropDown();
+    };
 
     filter = ({props}) => {
         const {subStr} = this.state;
