@@ -71,6 +71,7 @@ input {
 
 .select-box--box {
   width: 100%;
+  margin: 20px;
 }
 
 .select-box--selected-item {
@@ -83,12 +84,12 @@ input {
 
 .select-box--items-container {
   display: block;
-  /*flex-direction: column;*/
   position: absolute;
   width: 400px;
 }
 
 .select-box--item {
+  position: relative;
   border-bottom: 1px solid #ddd;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
@@ -97,6 +98,7 @@ input {
   width: 100%;
   padding: 6px;
   padding-right: 20px;
+  z-index: 100;
 }
 
 .select-box--item:hover {
@@ -113,19 +115,21 @@ input {
 
 .select-box--arrow-down::after {
   content: '';
-  position: absolute;
+  /*position: absolute;*/
   width: 36px;
   height: 36px;
   opacity: 0.5;
   background: url('./img/arrow-down.png')  no-repeat;
+  z-index: 1;
 }
 
 .select-box--arrow-up::after {
   content: '';
-  position: absolute;
+  /*position: absolute;*/
   width: 36px;
   height: 36px;
   opacity: 0.5;
   background: url('./img/arrow-up.png')  no-repeat;
+  z-index: 1;
 }
 
