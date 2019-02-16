@@ -8,7 +8,6 @@ export default class Select extends React.Component {
 
     onChange = (event) => {
         this.setState({subStr: event.target.value});
-        this.dropDown();
     };
 
     dropDown = () => this.setState(prevState => ({
@@ -26,7 +25,7 @@ export default class Select extends React.Component {
     };
 
     onClickCollapseMenu = (name) => () => {
-        this.dropDown();
+        // this.dropDown();
         this.props.onClick(name);
     };
 
@@ -34,16 +33,20 @@ export default class Select extends React.Component {
         const { placeHolder, value, children } = this.props;
         const { expand, subStr } = this.state;
 
-        return <div className='select-box--box'>
+        return <div className='select-box--box'
+                    onFocus={() => this.setState({expand: true})}
+                    onBlur={() => this.setState({expand: false})}>
             <div className='select-box--container'>
-
                 <input type='text'
                        className='select-box--selected-item'
                        placeholder={placeHolder}
                        value={value ? value : subStr}
                        onChange={this.onChange}/>
 
-                <span className={ expand ? "select-box--arrow-up" : "select-box--arrow-down"} onClick={this.dropDown}/>
+                <span className={ expand ? "select-box--arrow-up" : "select-box--arrow-down"}
+                      onClick={this.dropDown}
+                      onFocus={() => console.log('onFocus')}
+                      onBlur={() => console.log('onBlur')}/>
             </div>
 
             <div style={{display: expand ? 'block' : 'none'}}>
