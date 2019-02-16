@@ -24,26 +24,65 @@ class RequestContainer extends React.Component  {
 
     setEquipValue = (name) => (value) => this.setState({[name]: value});
 
+    setMalfunctionValue = (name) => (value) => this.setState({[name]: value});
+
     render() {
-        const { selectedEquipment } = this.props;
+        const { selectedEquipment, selectedMalfunction } = this.props;
         return (
             <Fragment>
                 <div>
                     <div className='request-container'>
                         <p>Оборудование</p>
-                        {Array.from({length: this.state.numberOfEquipments}, (v, k) => k+1).map((i) =>
-                            <Select placeHolder='Начните набирать, или выберите из списка'
-                                    value={this.state[`equipValue${i}`]}
-                                    onClick={this.setEquipValue(`equipValue${i}`)}
-                                    key={i}
-                            >
+                        {Array.from({length: this.state.numberOfEquipments}, (v, k) => k + 1).map((i) =>
+                            <div key={i}>
+                                <Select placeHolder='Начните набирать, или выберите из списка'
+                                        value={this.state[`equipValue${i}`]}
+                                        onClick={this.setEquipValue(`equipValue${i}`)}
+                                >
 
-                                {selectedEquipment.map(({id, name}, index) =>
-                                    <Option key={index} value={id}>
-                                        {name}
-                                    </Option>
-                                )}
-                            </Select>
+                                    {selectedEquipment.map(({id, name}, index) =>
+                                        <Option key={index} value={id}>
+                                            {name}
+                                        </Option>
+                                    )}
+                                </Select>
+
+                                <p>Неисправности:</p>
+                                <Select placeHolder='Начните набирать, или выберите из списка'
+                                        value={this.state[`malfunctionValue${i}_1`]}
+                                        onClick={this.setMalfunctionValue(`malfunctionValue${i}_1`)}
+                                >
+
+                                    {selectedMalfunction.map(({id, name}, index) =>
+                                        <Option key={index} value={id}>
+                                            {name}
+                                        </Option>
+                                    )}
+                                </Select>
+                                <Select placeHolder='Начните набирать, или выберите из списка'
+                                        value={this.state[`malfunctionValue${i}_2`]}
+                                        onClick={this.setMalfunctionValue(`malfunctionValue${i}_2`)}
+                                >
+
+                                    {selectedMalfunction.map(({id, name}, index) =>
+                                        <Option key={index} value={id}>
+                                            {name}
+                                        </Option>
+                                    )}
+                                </Select>
+                                <Select placeHolder='Начните набирать, или выберите из списка'
+                                        value={this.state[`malfunctionValue${i}_3`]}
+                                        onClick={this.setMalfunctionValue(`malfunctionValue${i}_3`)}
+                                >
+
+                                    {selectedMalfunction.map(({id, name}, index) =>
+                                        <Option key={index} value={id}>
+                                            {name}
+                                        </Option>
+                                    )}
+                                </Select>
+
+                            </div>
                         )}
                     </div>
                     <Button buttonName='Добавить оборудование'
