@@ -26,8 +26,12 @@ html {
     margin-top: 10px;
     font-size: medium;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-left: 32%;
+}
+
+.button-text {
+    padding-left: 15px;
 }
 
 .button-light-arrow-down {
