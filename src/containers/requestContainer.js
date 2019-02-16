@@ -35,6 +35,7 @@ class RequestContainer extends React.Component  {
                             <Select placeHolder='Начните набирать, или выберите из списка'
                                     value={this.state[`equipValue${i}`]}
                                     onClick={this.setEquipValue(`equipValue${i}`)}
+                                    key={i}
                             >
 
                                 {selectedEquipment.map(({id, name}, index) =>
