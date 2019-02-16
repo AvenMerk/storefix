@@ -41,7 +41,7 @@ export default class Select extends React.Component {
                        value={value ? value : subStr}
                        onChange={this.onChange}/>
 
-                <span className={ expand ? "select-box--arrow-up" : "select-box--arrow-down"}
+                <span className={ value ? "select-box--close" : expand ? "select-box--arrow-up" : "select-box--arrow-down"}
                       onClick={this.dropDown}/>
             </div>
 
